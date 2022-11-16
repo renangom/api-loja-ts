@@ -4,6 +4,7 @@ import path from 'path';
 import { createCategory } from './app/useCases/Category/createCategory';
 import { listCategories } from './app/useCases/Category/listCategories';
 import { createProduct } from './app/useCases/Product/createProduct';
+import { listProductByCategory } from './app/useCases/Product/listProductByCategory';
 import { listProducts } from './app/useCases/Product/listProducts';
 
 export const appRouter = Router();
@@ -34,9 +35,7 @@ appRouter.get('/api/products', listProducts);
 appRouter.post('/api/products', upload.single('image'), createProduct);
 
 // Get product by category
-appRouter.get('/api/:categorie/products', (req,res) => {
-    res.send('Ok');
-});
+appRouter.get('/api/:categoryId/products', listProductByCategory);
 
 // List orders
 appRouter.get('/api/orders', (req,res) => {

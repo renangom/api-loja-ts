@@ -21,7 +21,13 @@ export async function createProduct(req:Request, res: Response) {
             return res.status(400).json('Ingredients is required');
         }
 
-        const newProduct = await Product.create({name, description, imagePath, price: Number(price), ingredients: JSON.parse(ingredients), category});
+        const newProduct = await Product.create({
+            name,
+            description,
+            imagePath,
+            price: Number(price),
+            ingredients: ingredients ? JSON.parse(ingredients) : [],
+            category});
 
         res.status(201).json(newProduct);
     }catch(err){
