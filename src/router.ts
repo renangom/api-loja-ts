@@ -1,22 +1,15 @@
 import { Request, Response, Router } from 'express';
-import { Category } from './app/models/category';
+import { createCategory } from './app/useCases/Category/createCategory';
+import { listCategories } from './app/useCases/Category/listCategories';
 
-const appRouter = Router();
+export const appRouter = Router();
 
 
 // List categories
-appRouter.get('/api/categories', (req: Request, res: Response) => {
-    const categories = Category.find();
-    if(!categories){
-        res.status(401).json('There are no categories');
-    }
-    res.status(200).json(categories);
-});
+appRouter.get('/api/categories', listCategories);
 
 //Create category
-appRouter.post('/api/categories', (req,res) => {
-    res.send('Ok');
-});
+appRouter.post('/api/categories', createCategory);
 
 // List Products
 appRouter.get('/api/products', (req,res) => {
