@@ -6,9 +6,9 @@ export async function createCategory(req: Request, res:Response) {
         const {icon, name} = req.body;
         const category = await Category.create({icon, name});
 
-        res.status(201).json(category);
+        return res.status(201).json(category);
     }catch(err){
-        res.status(500).json({
+        return res.status(500).json({
             error: 'Internal server error'
         });
     }

@@ -10,14 +10,13 @@ export const Product = model('Product', new Schema({
         type:[{
             name:{
                 type: String,
-                required: true
+                required: false
             },
             icon:{
                 type:String,
-                required:true
+                required:false
             }
         }],
-        required: true
     },
     category:{
         type: Schema.Types.ObjectId,

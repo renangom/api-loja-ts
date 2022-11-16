@@ -3,6 +3,8 @@ import multer from 'multer';
 import path from 'path';
 import { createCategory } from './app/useCases/Category/createCategory';
 import { listCategories } from './app/useCases/Category/listCategories';
+import { createOrder } from './app/useCases/Orders/createOrder';
+import { listOrders } from './app/useCases/Orders/listOrders';
 import { createProduct } from './app/useCases/Product/createProduct';
 import { listProductByCategory } from './app/useCases/Product/listProductByCategory';
 import { listProducts } from './app/useCases/Product/listProducts';
@@ -38,13 +40,11 @@ appRouter.post('/api/products', upload.single('image'), createProduct);
 appRouter.get('/api/:categoryId/products', listProductByCategory);
 
 // List orders
-appRouter.get('/api/orders', (req,res) => {
-    res.send('Ok');
-});
+appRouter.get('/api/orders', listOrders);
+
+
 // Create order
-appRouter.post('/api/orders', (req,res) => {
-    res.send('Ok');
-});
+appRouter.post('/api/orders', createOrder);
 
 //Change order status
 appRouter.patch('/api/orders/:orderId', (req,res) => {

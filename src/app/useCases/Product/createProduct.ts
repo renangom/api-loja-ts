@@ -17,9 +17,6 @@ export async function createProduct(req:Request, res: Response) {
         if(!price){
             return res.status(400).json('Price is required');
         }
-        if(!ingredients){
-            return res.status(400).json('Ingredients is required');
-        }
 
         const newProduct = await Product.create({
             name,
