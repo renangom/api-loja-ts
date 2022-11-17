@@ -3,6 +3,7 @@ import multer from 'multer';
 import path from 'path';
 import { createCategory } from './app/useCases/Category/createCategory';
 import { listCategories } from './app/useCases/Category/listCategories';
+import { changeOrderStatus } from './app/useCases/Orders/changeOrderStatus';
 import { createOrder } from './app/useCases/Orders/createOrder';
 import { listOrders } from './app/useCases/Orders/listOrders';
 import { createProduct } from './app/useCases/Product/createProduct';
@@ -47,9 +48,7 @@ appRouter.get('/api/orders', listOrders);
 appRouter.post('/api/orders', createOrder);
 
 //Change order status
-appRouter.patch('/api/orders/:orderId', (req,res) => {
-    res.send('Ok');
-});
+appRouter.patch('/api/orders/:orderId', changeOrderStatus);
 
 // delete/cancel order
 appRouter.delete('/api/orders/:orderId', (req,res) => {
